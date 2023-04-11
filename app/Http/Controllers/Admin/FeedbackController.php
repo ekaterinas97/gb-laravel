@@ -29,7 +29,12 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-
+        $str = "";
+        $data = $request->only(['user_name', 'description']);
+        foreach ($data as $item){
+            $str .= "$item\n";
+        }
+        Storage::append('example.txt', $str);
     }
 
 
